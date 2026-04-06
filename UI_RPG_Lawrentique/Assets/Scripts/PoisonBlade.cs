@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PoisonBlade : Blade
 {
-
-    [SerializeField] float poisonDamage;
-    [SerializeField] int poisonCount;
+    [SerializeField] private float poisonDamage;
+    [SerializeField] private int poisonCount;
     
     public override float GetDamage()
     {
@@ -12,18 +12,8 @@ public class PoisonBlade : Blade
         if (poisonCount > 0)
         {
             poisonCount--;
-            return baseDamage * poisonDamage;
+            return baseDamage + poisonDamage;
         }
         return baseDamage;
-    }
-    
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
     }
 }
